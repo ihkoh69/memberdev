@@ -1,0 +1,28 @@
+name: github action test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  My-Deploy-Job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: hello 찍기
+        run: echo "Hello World"
+
+      - name: 여러명령어 넣기
+        run: |
+          echo "good"
+          echo "morning"
+
+      - name: 변수사용하기
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+
+      - name: github action secret변수 사용
+        run: |
+          echo ${{ secrets.MY_NAME }}
+          echo ${{ secrets.MY_HOBBY }}
