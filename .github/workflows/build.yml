@@ -17,3 +17,9 @@ jobs:
           key: ${{ secrets.PASSWORD }}
           script: |
             pwd
+            cd /home/ubuntu/memberdev
+            git config --global --add safe.directory /home/ubuntu/memberdev
+            sudo git pull origin main
+            sudo ./gradlew clean bootWar
+            sudo fuser -k -n tcp 8080
+            sudo nohup java -jar build/libs/*SNAPSHOT.war > /dev/null 2>&1 &
